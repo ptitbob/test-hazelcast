@@ -1,14 +1,6 @@
 hazelcast:
-  cluster-name: ${hz-cluster-name}
-  network:
-    outbound-ports:
-      - 33000
-    port:
-      auto-increment: true
-      port-count: 20
-      port: 5801
-    join:
-      multicast:
-        enabled: true
-        multicast-port: 35000
-        multicast-time-to-live: 32
+  properties:
+    hazelcast.logging.type: slf4j
+  import:
+    - file:conf/hazelcast-external.yaml
+

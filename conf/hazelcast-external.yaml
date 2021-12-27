@@ -1,0 +1,24 @@
+hazelcast:
+  # cluster-name: ${hz-cluster-name}
+  cluster-name: test-cluster-cache
+  network:
+    outbound-ports:
+      - 33000
+    port:
+      auto-increment: true
+      port-count: 20
+      port: 5801
+    join:
+      multicast:
+        enabled: true
+        multicast-port: 35000
+        multicast-time-to-live: 32
+  map:
+    books:
+      time-to-live-seconds: 0
+      max-idle-seconds: 0
+      eviction:
+        eviction-policy: LRU
+        max-size-policy: PER_NODE # default
+        size: 2
+

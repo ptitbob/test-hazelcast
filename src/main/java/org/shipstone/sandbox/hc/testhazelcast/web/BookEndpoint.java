@@ -1,9 +1,8 @@
 package org.shipstone.sandbox.hc.testhazelcast.web;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.shipstone.sandbox.hc.testhazelcast.service.BookService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,9 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/books")
 @AllArgsConstructor
+@Slf4j
 public class BookEndpoint {
-
-  public static final Logger LOGGER = LoggerFactory.getLogger(BookEndpoint.class);
 
   private final BookService bookService;
 
@@ -25,9 +23,9 @@ public class BookEndpoint {
   public String getBookTitle(
       @PathVariable("id") String id
   ) {
-    LOGGER.info("Endpoint : Avant appel Service");
+    log.info("Endpoint : Avant appel Service");
     String bookTilte = bookService.getBookTitle(id);
-    LOGGER.info("Endpoint : Apres appel Service");
+    log.info("Endpoint : Apres appel Service");
     return bookTilte;
   }
 
